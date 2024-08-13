@@ -6,12 +6,12 @@
 
 resource "helm_release" "grafana" {
     name       =  "grafana"
-    namespace  =  kubernetes_namespace.kube_namespace.metadata[0].name
+    namespace  =  var.namespace-name
     repository =  "https://grafana.github.io/helm-charts
     chart      = var.grafana-chart-name
     version    = var.grafana-chart-version
 
-    depends_on = [kubernetes_namespace.kube_namespace]
+    depends_on = [var.namespace_dependency]
 
     set {
         name  = "adminUser"

@@ -22,3 +22,8 @@ variable "grafana-service-type" {
     description = "grafana kubernetes service type"
     type        = string
 }
+
+variable "namespace_dependency" {
+    description = "grafana namespace"
+    type        = any
+}

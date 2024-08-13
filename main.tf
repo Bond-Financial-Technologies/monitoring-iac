@@ -1,9 +1,10 @@
 module "prometheus" {
     source = "./modules/prometheus"
-    kube-version = "36.2.0"
+    namespace = var.prometheus_namespace
 }
 
 module "grafana" {
     source  = "./modules/grafana"
-    kube-version = "36.2.0"
+    namespace = module.prometheus.namespace
+    namespace_dependency = module.prometheus
 }
